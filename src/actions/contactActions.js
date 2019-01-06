@@ -1,4 +1,4 @@
-import { GET_CONTACTS, DELETE_CONTACT, ADD_CONTACT } from './types';
+import { GET_CONTACTS, DELETE_CONTACT, ADD_CONTACT, GET_CONTACT, UPDATE_CONTACT } from './types';
 import axios from 'axios';
 
 export const getContacts = () => async  dispatch => {
@@ -23,5 +23,21 @@ export const addContact = contact => async dispatch => {
   dispatch({
     type: ADD_CONTACT,
     payload: res.data
+  });
+}
+
+export const getContact = id => async dispatch => {
+  let res = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+  dispatch({
+    type: GET_CONTACT,
+    payload: res.data
+  });
+}
+
+export const updateContact = id => async dispatch => {
+  await axios.update(`https://jsonplaceholder.typicode.com/users/${id}`)
+  dispatch({
+    type: UPDATE_CONTACT,
+    payload: id
   });
 }
