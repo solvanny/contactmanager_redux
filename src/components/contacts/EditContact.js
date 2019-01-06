@@ -47,15 +47,14 @@ class EditContact extends Component {
       return;
     }
 
-   
-
     const { id } = this.props.match.params;
 
     const updContact = {
-          name,
-          email,
-          phone
-        };
+      id,
+      name,
+      email,
+      phone
+    };
 
     this.props.updateContact(updContact)
   
