@@ -7,13 +7,17 @@ import Header from './components/layout/Header';
 import About from './components/pages/About';
 import NotFound from './components/pages/NotFound';
 
+import { Provider } from 'react-redux';
+import store from './store';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Provider store={store}>
+        <Router>
         <div className="App">
           <Header branding="Contact Manager" />
           <div className="container">
@@ -27,6 +31,7 @@ class App extends Component {
           </div>
         </div>
       </Router>
+      </Provider>
     );
   }
 }
